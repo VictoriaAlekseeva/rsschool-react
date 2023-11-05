@@ -1,0 +1,32 @@
+.beer-cards-wrapper {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 10px;
+}
+
+.beer-card {
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  max-width: 30%;
+  min-width: 20%;
+  text-align: left;
+}
+
+.beer-card__attr {
+  display: flex;
+  align-items: center;
+}
+
+.beer-card__img {
+  display: block;
+}
+
+.beer-card__food {
+  padding-left: 0;
+  margin-left: 0;
+  font-weight: 800;
+}
