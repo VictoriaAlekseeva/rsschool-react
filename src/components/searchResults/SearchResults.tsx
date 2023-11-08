@@ -13,17 +13,17 @@ function SearchResults({ searchResults }) {
               alt={item.name}
             />
             <div>
-            <ul>
-              <li>ABV: {item.abv}%</li>
-              <li>IBU: {item.ibu}</li>
-              <li>SRM: {item.srm}</li>
-            </ul>
-            <ul>
-              <span className="beer-card__food">Food Pairings:</span>
-              {item.food_pairing.map((food) => (
-                <li key={food}>{food}</li>
-              ))}
-            </ul>
+              <ul>
+                <li>ABV: {item.abv}%</li>
+                <li>IBU: {item.ibu}</li>
+                <li>SRM: {item.srm}</li>
+              </ul>
+              <ul>
+                <span className="beer-card__food">Food Pairings:</span>
+                {item.food_pairing.map((food) => (
+                  <li key={food}>{food}</li>
+                ))}
+              </ul>
             </div>
           </div>
           <p>{item.description}</p>

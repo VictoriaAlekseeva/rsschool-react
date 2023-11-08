@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 
+import './SearchBar.css';
+
 function SearchBar({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(
+    localStorage.getItem('searchTerm') || ''
+  );
 
   function handleInputChange(e) {
     setSearchTerm(e.target.value);
+    localStorage.setItem('searchTerm', e.target.value);
   }
 
   function handleSearch() {
@@ -12,7 +17,7 @@ function SearchBar({ onSearch }) {
   }
 
   return (
-    <div>
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Type beer name"

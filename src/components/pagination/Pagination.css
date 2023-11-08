@@ -1,0 +1,30 @@
+.pagination {
+  width: 200px;
+  padding: 10px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.pagination__arrow,
+.pagination__counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: 60%;
+  background-repeat: no-repeat;
+}
+
+.pagination__arrow_left {
+  background-image: url('../../assets/left-arrow.svg');
+}
+
+.pagination__arrow_right {
+  background-image: url('../../assets/right-arrow.svg');
+}
