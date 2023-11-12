@@ -1,9 +1,13 @@
 import './SearchResults.css';
+import { BeerData } from '../../types/interface'
+import { useContext } from 'react';
+import BeerDataContext from '../../contexts/BeerDataContext';
 
-function SearchResults({ searchResults }) {
+const SearchResults: React.FC = () => {
+  const beerData = useContext(BeerDataContext)
   return (
     <div className="beer-cards-wrapper">
-      {searchResults.map((item) => (
+      {beerData!.map((item: BeerData) => (
         <div className="beer-card" key={item.id}>
           <h3>{item.name}</h3>
           <div className="beer-card__attr">

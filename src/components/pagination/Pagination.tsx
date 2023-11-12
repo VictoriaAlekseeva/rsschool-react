@@ -2,13 +2,21 @@ import React from 'react';
 
 import './Pagination.css';
 
-export default function Pagination({
+type Props = {
+  gotoPrevPage: () => void,
+  gotoNextPage: () => void,
+  currentPage: string,
+  itemsPerPage: string,
+  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
+}
+
+const Pagination: React.FC<Props> = ({
   gotoPrevPage,
   gotoNextPage,
   currentPage,
   itemsPerPage,
   handleSelectChange,
-}) {
+}) => {
   return (
     <div className="pagination">
       <span
@@ -35,3 +43,5 @@ export default function Pagination({
     </div>
   );
 }
+
+export default Pagination;

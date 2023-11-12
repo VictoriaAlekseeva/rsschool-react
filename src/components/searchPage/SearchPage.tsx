@@ -1,20 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import SearchBar from '../searchBar/SearchBar.tsx';
 import SearchResults from '../searchResults/SearchResults.tsx';
 
 import { SEARCH_ALL_BEERS } from '../../apiConstants.ts';
+import BeerDataContext from '../../contexts/BeerDataContext.ts';
+import { BeerData } from '../../types/interface';
 import Pagination from '../pagination/Pagination.tsx';
 
 function SearchPage() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<BeerData[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+
+  const [pageParams, setPageParams] = useSearchParams({
+    currentPage: '1',
+    itemsPerPage: '5',
+  });
 
   async function handleSearch(
     searchTerm: string | null,
-    page = 1,
-    per_page = 5
+    page: string | null = '1',
+    per_page: string | null = '5'
   ) {
     const URL = searchTerm
       ? `${SEARCH_ALL_BEERS}?beer_name=${encodeURIComponent(
@@ -35,40 +41,49 @@ function SearchPage() {
   }
 
   function gotoPrevPage() {
-    setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage);
+    const pageNum = pageParams.get('currentPage');
+    const page = pageNum && +pageNum > 1 ? +pageNum - 1 : pageNum;
+    pageParams.set('currentPage', `${page}`);
+    setPageParams(pageParams);
   }
 
   function gotoNextPage() {
-    setCurrentPage(currentPage + 1);
+    const pageNum = pageParams.get('currentPage');
+    const page = +pageNum! + 1;
+    pageParams.set('currentPage', `${page}`);
+    setPageParams(pageParams);
   }
 
-  const handleSelectChange = (event) => {
-    setItemsPerPage(() => event.target.value);
-    setCurrentPage(1);
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setPageParams({ currentPage: '1', itemsPerPage: event.target.value });
   };
 
   useEffect(() => {
     const searchTerm = localStorage.getItem('searchTerm');
+    const pageNum = pageParams.get('currentPage');
+    const itemsQuantity = pageParams.get('itemsPerPage');
 
-    searchTerm && handleSearch(searchTerm, currentPage, itemsPerPage);
-  }, [currentPage, itemsPerPage]);
+    searchTerm && handleSearch(searchTerm, pageNum, itemsQuantity);
+  }, [pageParams]);
 
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      {searchResults.length && (
+      {searchResults!.length && (
         <Pagination
-          gotoPrevPage={gotoPrevPage}
-          gotoNextPage={gotoNextPage}
-          currentPage={currentPage}
-          itemsPerPage={itemsPerPage}
-          handleSelectChange={handleSelectChange}
+        gotoPrevPage={gotoPrevPage}
+        gotoNextPage={gotoNextPage}
+        currentPage={pageParams.get('currentPage')!}
+        itemsPerPage={pageParams.get('itemsPerPage')!}
+        handleSelectChange={handleSelectChange}
         />
-      )}
+        )}
       {isLoading ? (
         <p>Loading beers...</p>
       ) : (
-        <SearchResults searchResults={searchResults} />
+        <BeerDataContext.Provider value={searchResults}>
+          <SearchResults/>
+        </BeerDataContext.Provider>
       )}
     </>
   );
