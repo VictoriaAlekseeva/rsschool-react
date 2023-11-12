@@ -1,10 +1,10 @@
 import './SearchResults.css';
-import { BeerData } from '../../types/interface'
+import { BeerData } from '../../types/interface';
 import { useContext } from 'react';
 import BeerDataContext from '../../contexts/BeerDataContext';
 
 const SearchResults: React.FC = () => {
-  const beerData = useContext(BeerDataContext)
+  const beerData = useContext(BeerDataContext);
   return (
     <div className="beer-cards-wrapper">
       {beerData!.map((item: BeerData) => (
@@ -35,6 +35,6 @@ const SearchResults: React.FC = () => {
       ))}
     </div>
   );
-}
+};
 
 export default SearchResults;

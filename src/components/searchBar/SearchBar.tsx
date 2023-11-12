@@ -4,10 +4,12 @@ import './SearchBar.css';
 import InputValueContext from '../../contexts/InputValueContext';
 
 type Props = {
-  onSearch: (searchTerm: string | null,
-  page?: string | null,
-  per_page?: string | null) => void
-}
+  onSearch: (
+    searchTerm: string | null,
+    page?: string | null,
+    per_page?: string | null
+  ) => void;
+};
 
 const SearchBar: React.FC<Props> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState(
@@ -31,11 +33,11 @@ const SearchBar: React.FC<Props> = ({ onSearch }) => {
           placeholder="Type beer name"
           value={searchTerm}
           onChange={handleInputChange}
-          />
+        />
         <button onClick={handleSearch}>Search</button>
       </div>
     </InputValueContext.Provider>
   );
-}
+};
 
 export default SearchBar;

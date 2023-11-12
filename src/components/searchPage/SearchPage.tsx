@@ -71,18 +71,18 @@ function SearchPage() {
       <SearchBar onSearch={handleSearch} />
       {searchResults!.length && (
         <Pagination
-        gotoPrevPage={gotoPrevPage}
-        gotoNextPage={gotoNextPage}
-        currentPage={pageParams.get('currentPage')!}
-        itemsPerPage={pageParams.get('itemsPerPage')!}
-        handleSelectChange={handleSelectChange}
+          gotoPrevPage={gotoPrevPage}
+          gotoNextPage={gotoNextPage}
+          currentPage={pageParams.get('currentPage')!}
+          itemsPerPage={pageParams.get('itemsPerPage')!}
+          handleSelectChange={handleSelectChange}
         />
-        )}
+      )}
       {isLoading ? (
         <p>Loading beers...</p>
       ) : (
         <BeerDataContext.Provider value={searchResults}>
-          <SearchResults/>
+          <SearchResults />
         </BeerDataContext.Provider>
       )}
     </>

@@ -3,12 +3,12 @@ import React from 'react';
 import './Pagination.css';
 
 type Props = {
-  gotoPrevPage: () => void,
-  gotoNextPage: () => void,
-  currentPage: string,
-  itemsPerPage: string,
-  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void,
-}
+  gotoPrevPage: () => void;
+  gotoNextPage: () => void;
+  currentPage: string;
+  itemsPerPage: string;
+  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+};
 
 const Pagination: React.FC<Props> = ({
   gotoPrevPage,
@@ -42,6 +42,6 @@ const Pagination: React.FC<Props> = ({
       </div>
     </div>
   );
-}
+};
 
 export default Pagination;
