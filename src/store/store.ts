@@ -1,12 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from './slices/paginationSlice';
-import searchReduser from './slices/searchSlice'
-
+import searchReduser from './slices/searchSlice';
 
 export const store = configureStore({
   reducer: {
     pageNumber: counterReducer,
-    search: searchReduser
+    search: searchReduser,
   },
 });
 

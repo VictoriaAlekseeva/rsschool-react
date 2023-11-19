@@ -20,8 +20,8 @@ export const paginationSlice = createSlice({
       if (state.value > 1) state.value -= 1;
     },
     reset: (state) => {
-        state.value = 1;
-      },
+      state.value = 1;
+    },
   },
 });
 

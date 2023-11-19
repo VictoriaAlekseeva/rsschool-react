@@ -16,7 +16,6 @@ type Props = {
 };
 
 const SearchBar: React.FC<Props> = ({ onSearch }) => {
-
   const dispatch = useDispatch();
   const searchTerm = useAppSelector((state) => state.search.searchValue);
 
@@ -26,19 +25,19 @@ const SearchBar: React.FC<Props> = ({ onSearch }) => {
 
   function handleSearch() {
     onSearch(searchTerm);
-    dispatch(reset())
+    dispatch(reset());
   }
 
   return (
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Type beer name"
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div>
+    <div className="search-bar">
+      <input
+        type="text"
+        placeholder="Type beer name"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <button onClick={handleSearch}>Search</button>
+    </div>
   );
 };
 

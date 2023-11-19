@@ -25,7 +25,7 @@ function SearchPage() {
     searchTerm: string | null,
     page: string | null = '1',
     per_page: string | null = '5'
-    ) {
+  ) {
     const URL = searchTerm
       ? `${SEARCH_ALL_BEERS}?beer_name=${encodeURIComponent(
           searchTerm
