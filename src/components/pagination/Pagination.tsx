@@ -1,34 +1,30 @@
 import React from 'react';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { decrement, increment } from '../../store/slices/paginationSlice';
 
 import './Pagination.css';
 
 type Props = {
-  gotoPrevPage: () => void;
-  gotoNextPage: () => void;
-  currentPage: string;
   itemsPerPage: string;
   handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 };
 
-const Pagination: React.FC<Props> = ({
-  gotoPrevPage,
-  gotoNextPage,
-  currentPage,
-  itemsPerPage,
-  handleSelectChange,
-}) => {
+const Pagination: React.FC<Props> = ({ itemsPerPage, handleSelectChange }) => {
+  const count = useAppSelector((state) => state.pageNumber.value);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="pagination">
       <span
         className="pagination__arrow pagination__arrow_left"
-        onClick={gotoPrevPage}
+        onClick={() => dispatch(decrement())}
       >
         {' '}
       </span>
-      <span className="pagination__counter">{currentPage}</span>
+      <span className="pagination__counter">{count}</span>
       <span
         className="pagination__arrow pagination__arrow_right"
-        onClick={gotoNextPage}
+        onClick={() => dispatch(increment())}
       >
         {' '}
       </span>

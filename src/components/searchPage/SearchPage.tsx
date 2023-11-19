@@ -7,13 +7,13 @@ import { SEARCH_ALL_BEERS } from '../../apiConstants.ts';
 import BeerDataContext from '../../contexts/BeerDataContext.ts';
 import { BeerData } from '../../types/interface';
 import Pagination from '../pagination/Pagination.tsx';
+import { useAppSelector } from '../../store/hooks.ts';
 
 function SearchPage() {
   const [searchResults, setSearchResults] = useState<BeerData[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const [pageParams, setPageParams] = useSearchParams({
-    currentPage: '1',
     itemsPerPage: '5',
   });
 
@@ -40,40 +40,26 @@ function SearchPage() {
     }
   }
 
-  function gotoPrevPage() {
-    const pageNum = pageParams.get('currentPage');
-    const page = pageNum && +pageNum > 1 ? +pageNum - 1 : pageNum;
-    pageParams.set('currentPage', `${page}`);
-    setPageParams(pageParams);
-  }
-
-  function gotoNextPage() {
-    const pageNum = pageParams.get('currentPage');
-    const page = +pageNum! + 1;
-    pageParams.set('currentPage', `${page}`);
-    setPageParams(pageParams);
-  }
-
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPageParams({ currentPage: '1', itemsPerPage: event.target.value });
+    setPageParams({
+      itemsPerPage: event.target.value,
+    });
   };
+
+  const count = useAppSelector((state) => state.pageNumber.value);
 
   useEffect(() => {
     const searchTerm = localStorage.getItem('searchTerm');
-    const pageNum = pageParams.get('currentPage');
     const itemsQuantity = pageParams.get('itemsPerPage');
 
-    searchTerm && handleSearch(searchTerm, pageNum, itemsQuantity);
-  }, [pageParams]);
+    searchTerm && handleSearch(searchTerm, `${count}`, itemsQuantity);
+  }, [pageParams, count]);
 
   return (
     <>
       <SearchBar onSearch={handleSearch} />
       {searchResults!.length && (
         <Pagination
-          gotoPrevPage={gotoPrevPage}
-          gotoNextPage={gotoNextPage}
-          currentPage={pageParams.get('currentPage')!}
           itemsPerPage={pageParams.get('itemsPerPage')!}
           handleSelectChange={handleSelectChange}
         />
