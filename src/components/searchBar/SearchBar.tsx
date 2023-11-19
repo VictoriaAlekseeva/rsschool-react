@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './SearchBar.css';
-import InputValueContext from '../../contexts/InputValueContext';
+
+import { useDispatch } from 'react-redux';
+import { setSearchValue } from '../../store/slices/searchSlice';
+import { useAppSelector } from '../../store/hooks';
+import { reset } from '../../store/slices/paginationSlice';
 
 type Props = {
   onSearch: (
@@ -12,21 +16,20 @@ type Props = {
 };
 
 const SearchBar: React.FC<Props> = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState(
-    localStorage.getItem('searchTerm') || ''
-  );
+
+  const dispatch = useDispatch();
+  const searchTerm = useAppSelector((state) => state.search.searchValue);
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchTerm(e.target.value);
-    localStorage.setItem('searchTerm', e.target.value);
+    dispatch(setSearchValue(e.target.value));
   }
 
   function handleSearch() {
     onSearch(searchTerm);
+    dispatch(reset())
   }
 
   return (
-    <InputValueContext.Provider value={searchTerm}>
       <div className="search-bar">
         <input
           type="text"
@@ -36,7 +39,6 @@ const SearchBar: React.FC<Props> = ({ onSearch }) => {
         />
         <button onClick={handleSearch}>Search</button>
       </div>
-    </InputValueContext.Provider>
   );
 };
 

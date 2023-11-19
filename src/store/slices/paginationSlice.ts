@@ -19,10 +19,13 @@ export const paginationSlice = createSlice({
     decrement: (state) => {
       if (state.value > 1) state.value -= 1;
     },
+    reset: (state) => {
+        state.value = 1;
+      },
   },
 });
 
-export const { increment, decrement } = paginationSlice.actions;
+export const { increment, decrement, reset } = paginationSlice.actions;
 
 export const selectCount = (state: RootState) => state.pageNumber.value;
 

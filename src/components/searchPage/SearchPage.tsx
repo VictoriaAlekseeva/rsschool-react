@@ -17,11 +17,15 @@ function SearchPage() {
     itemsPerPage: '5',
   });
 
+  const searchTerm = useAppSelector((state) => state.search.searchValue);
+
+  const count = useAppSelector((state) => state.pageNumber.value);
+
   async function handleSearch(
     searchTerm: string | null,
     page: string | null = '1',
     per_page: string | null = '5'
-  ) {
+    ) {
     const URL = searchTerm
       ? `${SEARCH_ALL_BEERS}?beer_name=${encodeURIComponent(
           searchTerm
@@ -46,14 +50,13 @@ function SearchPage() {
     });
   };
 
-  const count = useAppSelector((state) => state.pageNumber.value);
-
   useEffect(() => {
-    const searchTerm = localStorage.getItem('searchTerm');
     const itemsQuantity = pageParams.get('itemsPerPage');
 
-    searchTerm && handleSearch(searchTerm, `${count}`, itemsQuantity);
-  }, [pageParams, count]);
+    if (searchTerm !== null && searchTerm !== '' && count !== null) {
+      handleSearch(searchTerm, `${count}`, itemsQuantity);
+    }
+  }, [pageParams, count, searchTerm]);
 
   return (
     <>
