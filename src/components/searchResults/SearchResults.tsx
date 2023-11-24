@@ -1,4 +1,4 @@
-import './SearchResults.css';
+// import './SearchResults.css';
 import { BeerData } from '../../types/interface';
 import { useContext } from 'react';
 import BeerDataContext from '../../contexts/BeerDataContext';

@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import SearchBar from '../searchBar/SearchBar.tsx';
-import SearchResults from '../searchResults/SearchResults.tsx';
-
-import { SEARCH_ALL_BEERS } from '../../apiConstants.ts';
-import BeerDataContext from '../../contexts/BeerDataContext.ts';
-import { BeerData } from '../../types/interface';
-import Pagination from '../pagination/Pagination.tsx';
-import { useAppSelector } from '../../store/hooks.ts';
+import { SEARCH_ALL_BEERS } from "@/apiConstants";
+import { useAppSelector } from "@/store/hooks";
+import { BeerData } from "@/types/interface";
+import { useEffect, useState } from "react";
+import SearchBar from "../searchBar/SearchBar";
+import Pagination from "../pagination/Pagination";
+import SearchResults from "../searchResults/SearchResults";
+import BeerDataContext from "@/contexts/BeerDataContext";
 
 function SearchPage() {
   const [searchResults, setSearchResults] = useState<BeerData[] | null>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [pageParams, setPageParams] = useSearchParams({
-    itemsPerPage: '5',
-  });
+  // const [pageParams, setPageParams] = useSearchParams({
+  //   itemsPerPage: '5',
+  // });
 
   const searchTerm = useAppSelector((state) => state.search.searchValue);
 
@@ -45,25 +43,30 @@ function SearchPage() {
   }
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPageParams({
-      itemsPerPage: event.target.value,
-    });
+    // setPageParams({
+    //   itemsPerPage: event.target.value,
+    // });
+    console.log("handleSelectChange")
   };
 
   useEffect(() => {
-    const itemsQuantity = pageParams.get('itemsPerPage');
+    // const itemsQuantity = pageParams.get('itemsPerPage');
 
     if (searchTerm !== null && searchTerm !== '' && count !== null) {
-      handleSearch(searchTerm, `${count}`, itemsQuantity);
+      // handleSearch(searchTerm, `${count}`, itemsQuantity);
+      handleSearch(searchTerm, `${count}`, '10');
     }
-  }, [pageParams, count, searchTerm]);
+  // }, [pageParams, count, searchTerm]);
+  }, [count, searchTerm]);
 
   return (
     <>
       <SearchBar onSearch={handleSearch} />
       {searchResults!.length && (
         <Pagination
-          itemsPerPage={pageParams.get('itemsPerPage')!}
+          // itemsPerPage={pageParams.get('itemsPerPage')!}
+          // handleSelectChange={handleSelectChange}
+          itemsPerPage={'10'}
           handleSelectChange={handleSelectChange}
         />
       )}

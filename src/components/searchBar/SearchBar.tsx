@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SearchBar.css';
+// import './SearchBar.css';
 
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from '../../store/slices/searchSlice';

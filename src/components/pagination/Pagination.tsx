@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppSelector, useAppDispatch } from '../../store/hooks';
 import { decrement, increment } from '../../store/slices/paginationSlice';
 
-import './Pagination.css';
+// import styles from './Pagination.module.scss'
 
 type Props = {
   itemsPerPage: string;
@@ -16,13 +16,18 @@ const Pagination: React.FC<Props> = ({ itemsPerPage, handleSelectChange }) => {
   return (
     <div className="pagination">
       <span
+        // className={`${styles.pagination__arrow} ${styles.pagination__arrow_left}`}
         className="pagination__arrow pagination__arrow_left"
         onClick={() => dispatch(decrement())}
       >
         {' '}
       </span>
-      <span className="pagination__counter">{count}</span>
       <span
+      // className={styles.pagination__counter}
+      className="pagination__counter"
+      >{count}</span>
+      <span
+        // className={`${styles.pagination__arrow} ${styles.pagination__arrow_right}`}
         className="pagination__arrow pagination__arrow_right"
         onClick={() => dispatch(increment())}
       >
