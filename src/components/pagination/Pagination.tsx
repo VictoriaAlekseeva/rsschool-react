@@ -23,9 +23,11 @@ const Pagination: React.FC<Props> = ({ itemsPerPage, handleSelectChange }) => {
         {' '}
       </span>
       <span
-      // className={styles.pagination__counter}
-      className="pagination__counter"
-      >{count}</span>
+        // className={styles.pagination__counter}
+        className="pagination__counter"
+      >
+        {count}
+      </span>
       <span
         // className={`${styles.pagination__arrow} ${styles.pagination__arrow_right}`}
         className="pagination__arrow pagination__arrow_right"

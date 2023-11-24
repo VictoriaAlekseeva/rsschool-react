@@ -1,7 +1,6 @@
-
-@import "../components/pagination/Pagination.module.scss";
-@import "../components/searchBar/SearchBar.module.scss";
-@import "../components/searchResults/SearchResults.module.scss";
+@import '../components/pagination/Pagination.module.scss';
+@import '../components/searchBar/SearchBar.module.scss';
+@import '../components/searchResults/SearchResults.module.scss';
 
 * {
   box-sizing: border-box;
@@ -29,4 +28,3 @@ a {
   color: inherit;
   text-decoration: none;
 }
-

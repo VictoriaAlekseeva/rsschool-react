@@ -1,11 +1,11 @@
-import { SEARCH_ALL_BEERS } from "@/apiConstants";
-import { useAppSelector } from "@/store/hooks";
-import { BeerData } from "@/types/interface";
-import { useEffect, useState } from "react";
-import SearchBar from "../searchBar/SearchBar";
-import Pagination from "../pagination/Pagination";
-import SearchResults from "../searchResults/SearchResults";
-import BeerDataContext from "@/contexts/BeerDataContext";
+import { SEARCH_ALL_BEERS } from '@/apiConstants';
+import { useAppSelector } from '@/store/hooks';
+import { BeerData } from '@/types/interface';
+import { useEffect, useState } from 'react';
+import SearchBar from '../searchBar/SearchBar';
+import Pagination from '../pagination/Pagination';
+import SearchResults from '../searchResults/SearchResults';
+import BeerDataContext from '@/contexts/BeerDataContext';
 
 function SearchPage() {
   const [searchResults, setSearchResults] = useState<BeerData[] | null>([]);
@@ -46,7 +46,7 @@ function SearchPage() {
     // setPageParams({
     //   itemsPerPage: event.target.value,
     // });
-    console.log("handleSelectChange")
+    console.log('handleSelectChange');
   };
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function SearchPage() {
       // handleSearch(searchTerm, `${count}`, itemsQuantity);
       handleSearch(searchTerm, `${count}`, '10');
     }
-  // }, [pageParams, count, searchTerm]);
+    // }, [pageParams, count, searchTerm]);
   }, [count, searchTerm]);
 
   return (
