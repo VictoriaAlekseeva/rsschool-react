@@ -1,17 +1,20 @@
-// import './SearchResults.css';
+import Image from 'next/image';
 import { BeerData } from '../../types/interface';
-import { useContext } from 'react';
-import BeerDataContext from '../../contexts/BeerDataContext';
 
-const SearchResults: React.FC = () => {
-  const beerData = useContext(BeerDataContext);
+type Props = {
+  beerData: BeerData[];
+};
+
+const SearchResults: React.FC<Props> = ({ beerData }) => {
   return (
     <div className="beer-cards-wrapper">
       {beerData!.map((item: BeerData) => (
         <div className="beer-card" key={item.id}>
           <h3>{item.name}</h3>
           <div className="beer-card__attr">
-            <img
+            <Image
+              width={60}
+              height={150}
               className="beer-card__img"
               src={item.image_url}
               alt={item.name}

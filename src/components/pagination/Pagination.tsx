@@ -1,43 +1,61 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { decrement, increment } from '../../store/slices/paginationSlice';
-
-// import styles from './Pagination.module.scss'
+import { useRouter } from 'next/router';
 
 type Props = {
-  itemsPerPage: string;
-  handleSelectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  totalCount: number;
 };
 
-const Pagination: React.FC<Props> = ({ itemsPerPage, handleSelectChange }) => {
-  const count = useAppSelector((state) => state.pageNumber.value);
-  const dispatch = useAppDispatch();
+const Pagination: React.FC<Props> = ({ totalCount }) => {
+  const router = useRouter();
+  const { page = 1, per_page = 5, beer_name = '' } = router.query;
+
+  const handleChangePage = (page: number) => {
+    if (beer_name) {
+      router.push(`/?beer_name=${beer_name}&page=${page}&per_page=${per_page}`);
+    } else {
+      router.push(`/?page=${page}&per_page=${per_page}`);
+    }
+  };
+
+  const handlerClickPrev = () => {
+    const currenPage = +page > 1 ? +page - 1 : +page;
+    handleChangePage(currenPage);
+  };
+
+  const handlerClickNext = () => {
+    const currenPage = +page + 1;
+    handleChangePage(currenPage);
+  };
+  const handleChangeSelect: React.ChangeEventHandler<HTMLSelectElement> = ({
+    target: { value },
+  }) => {
+    if (beer_name) {
+      router.push(`/?beer_name=${beer_name}&page=1&per_page=${value}`);
+    } else {
+      router.push(`/?page=1&per_page=${value}`);
+    }
+  };
 
   return (
     <div className="pagination">
       <span
-        // className={`${styles.pagination__arrow} ${styles.pagination__arrow_left}`}
         className="pagination__arrow pagination__arrow_left"
-        onClick={() => dispatch(decrement())}
+        onClick={handlerClickPrev}
       >
         {' '}
       </span>
-      <span
-        // className={styles.pagination__counter}
-        className="pagination__counter"
-      >
-        {count}
-      </span>
-      <span
-        // className={`${styles.pagination__arrow} ${styles.pagination__arrow_right}`}
-        className="pagination__arrow pagination__arrow_right"
-        onClick={() => dispatch(increment())}
-      >
-        {' '}
-      </span>
+      <span className="pagination__counter">{page}</span>
+      {totalCount > 0 && (
+        <span
+          className="pagination__arrow pagination__arrow_right"
+          onClick={handlerClickNext}
+        >
+          {' '}
+        </span>
+      )}
       <div>
         <label htmlFor="select">items per page:</label>
-        <select id="select" value={itemsPerPage} onChange={handleSelectChange}>
+        <select id="select" value={per_page} onChange={handleChangeSelect}>
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={15}>15</option>

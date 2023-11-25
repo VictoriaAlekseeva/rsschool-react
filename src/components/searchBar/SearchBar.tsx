@@ -1,40 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
-// import './SearchBar.css';
+const SearchBar: React.FC = () => {
+  const router = useRouter();
+  const { page = 1, per_page = 5, beer_name = '' } = router.query;
+  const [inputValue, setInputValue] = useState(beer_name);
 
-import { useDispatch } from 'react-redux';
-import { setSearchValue } from '../../store/slices/searchSlice';
-import { useAppSelector } from '../../store/hooks';
-import { reset } from '../../store/slices/paginationSlice';
+  const handleChangeInput: React.ChangeEventHandler<HTMLInputElement> = ({
+    target: { value },
+  }) => {
+    setInputValue(value);
+  };
 
-type Props = {
-  onSearch: (
-    searchTerm: string | null,
-    page?: string | null,
-    per_page?: string | null
-  ) => void;
-};
-
-const SearchBar: React.FC<Props> = ({ onSearch }) => {
-  const dispatch = useDispatch();
-  const searchTerm = useAppSelector((state) => state.search.searchValue);
-
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    dispatch(setSearchValue(e.target.value));
-  }
-
-  function handleSearch() {
-    onSearch(searchTerm);
-    dispatch(reset());
-  }
+  const handleSearch = () => {
+    if (inputValue) {
+      router.push(
+        `/?beer_name=${inputValue}&page=${page}&per_page=${per_page}`
+      );
+    } else {
+      router.push(`/?page=${page}&per_page=${per_page}`);
+    }
+  };
 
   return (
     <div className="search-bar">
       <input
         type="text"
         placeholder="Type beer name"
-        value={searchTerm}
-        onChange={handleInputChange}
+        value={inputValue}
+        onChange={handleChangeInput}
       />
       <button onClick={handleSearch}>Search</button>
     </div>

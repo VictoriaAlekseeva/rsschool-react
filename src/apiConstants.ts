@@ -1,4 +1,4 @@
-const BASE_URL = 'https://api.punkapi.com/v2';
+export const BASE_URL = 'https://api.punkapi.com/v2';
 
 export const SEARCH_ALL_BEERS = `${BASE_URL}/beers`;
 
