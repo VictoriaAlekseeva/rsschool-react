@@ -1,5 +1,3 @@
-import { Inter } from 'next/font/google';
-import SearchPage from '@/components/searchPage/SearchPage';
 import { wrapper } from '@/store/store';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next/types';
 import { BeerData } from '@/types/interface';
@@ -11,8 +9,6 @@ import {
 import Head from 'next/head';
 import Layout from '../Layout';
 import BeerDetails from '@/components/beerDetails/BeerDetails';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps((store) => async (context) => {
