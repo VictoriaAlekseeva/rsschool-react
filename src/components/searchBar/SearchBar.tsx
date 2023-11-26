@@ -31,6 +31,9 @@ const SearchBar: React.FC = () => {
         onChange={handleChangeInput}
       />
       <button onClick={handleSearch}>Search</button>
+      <button className="error-button" onClick={() => router.push('/error')}>
+        Show Error
+      </button>
     </div>
   );
 };

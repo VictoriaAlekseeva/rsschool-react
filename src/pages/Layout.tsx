@@ -11,16 +11,18 @@ type Props = {
 const Layout: React.FC<Props> = ({ beerData, children }) => {
   return (
     <div className={style.wrapper}>
-      <div className="App">
-        <header>
-          <h1>Brewdog brewery beers</h1>
-        </header>
-        <main>
-          <SearchPage beerData={beerData} />
-        </main>
-        <footer>
-          <p>© 2023</p>
-        </footer>
+      <div className={style.wrapper_main}>
+        <div className="App">
+          <header>
+            <h1>Brewdog brewery beers</h1>
+          </header>
+          <main>
+            <SearchPage beerData={beerData} />
+          </main>
+          <footer>
+            <p>© 2023</p>
+          </footer>
+        </div>
       </div>
       {children}
     </div>

@@ -16,7 +16,7 @@ const BeerDetails: React.FC<Props> = ({ beerInfo }) => {
   const per_page = router.query.per_page || 5;
 
   return (
-    <div className="beer-cards-wrapper">
+    <div className="beer-card-wrapper">
       <Link href={`/?beer_name=${beer_name}&page=${page}&per_page=${per_page}`}>
         <button> Back </button>
       </Link>

@@ -1,4 +1,12 @@
 .wrapper {
   display: flex;
-  align-self: flex-start;
+  justify-content: center;
+  align-items: baseline;
+  width: 80%;
+  margin: 0 auto;
 }
+
+.wrapper_main {
+  flex: 1;
+}
+

@@ -45,10 +45,6 @@ export const getServerSideProps: GetServerSideProps =
         .unwrap();
     }
 
-    // if (!data) {
-    //   return { notFound: true };
-    // }
-
     return { props: { beerData: data, beerInfo: detailedInfo } };
   });
 
