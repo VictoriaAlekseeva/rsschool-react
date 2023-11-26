@@ -32,10 +32,13 @@ const SearchResults: React.FC<Props> = ({ beerData }) => {
     }
   };
 
+  if (beerData.length === 0) return <div>No beer found</div>;
+
   return (
     <div className="beer-cards-wrapper">
       {beerData!.map((item: BeerData) => (
         <div
+          role="beerItem"
           className="beer-card"
           key={item.id}
           onClick={() => getBeerInfo(item?.id)}

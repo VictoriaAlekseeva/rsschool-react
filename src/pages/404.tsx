@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const Error = () => {
+const Error404 = () => {
   return (
     <>
       <h4>Oops! Something went wrong...</h4>
@@ -14,4 +14,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default Error404;
