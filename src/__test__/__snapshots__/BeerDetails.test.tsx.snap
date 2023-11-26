@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests for the Detailed Card component Make sure the detailed card component correctly displays the detailed card data 1`] = `
+<DocumentFragment>
+  <div
+    class="beer-card-wrapper"
+  >
+    <a
+      href="/?beer_name=&page=1&per_page=10"
+    >
+      <button>
+         Back 
+      </button>
+    </a>
+    <div
+      class="beer-card"
+    >
+      <h3>
+        Pilsen Lager
+      </h3>
+      <div
+        class="beer-card__attr"
+      >
+        <img
+          alt="Pilsen Lager"
+          class="beer-card__img"
+          data-nimg="1"
+          decoding="async"
+          height="150"
+          loading="lazy"
+          src="/_next/image?url=https%3A%2F%2Fimages.punkapi.com%2Fv2%2F4.png&w=128&q=75"
+          srcset="/_next/image?url=https%3A%2F%2Fimages.punkapi.com%2Fv2%2F4.png&w=64&q=75 1x, /_next/image?url=https%3A%2F%2Fimages.punkapi.com%2Fv2%2F4.png&w=128&q=75 2x"
+          style="color: transparent;"
+          width="60"
+        />
+        <div>
+          <ul>
+            <li>
+              ABV: 6.3%
+            </li>
+            <li>
+              IBU: 55
+            </li>
+            <li>
+              SRM: 15
+            </li>
+          </ul>
+          <ul>
+            <span
+              class="beer-card__food"
+            >
+              Food Pairings:
+            </span>
+            <li>
+              Spicy crab cakes
+            </li>
+            <li>
+              Spicy cucumber and carrot Thai salad
+            </li>
+            <li>
+              Sweet filled dumplings
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p>
+        Our Unleash the Yeast series was an epic experiment into the differences in aroma and flavour provided by switching up your yeast. We brewed up a wort with a light caramel note and some toasty biscuit flavour, and hopped it with Amarillo and Centennial for a citrusy bitterness. Everything else is down to the yeast. Pilsner yeast ferments with no fruity esters or spicy phenols, although it can add a hint of butterscotch.
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
