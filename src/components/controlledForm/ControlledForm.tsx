@@ -1,4 +1,3 @@
-// import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +24,7 @@ const ControlledForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
     console.log('submitted', data);
     dispatch(submitControlledForm(data));
     reset();
@@ -159,9 +158,9 @@ const ControlledForm: React.FC = () => {
         </div>
         <div className={styles.input_wrapper}>
           <label className={styles.label} htmlFor="picture">
-            Upload picture (allowed .png .jpeg) less 3mb
+            Upload picture (allowed .png .jpeg and less 3mb)
           </label>
-          <input type="file" id="picture" {...register('picture')} />
+          <input type="file" id="picture" accept="image/*" {...register('picture')} />
           {errors.picture && (
             <span className={styles.error_message}>
               {errors.picture.message}
