@@ -4,8 +4,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import './index.css';
-import UncontrolledForm from './components/uncontrolledForm/UncontrolledForm';
-import ControlledForm from './components/controlledForm/ControlledForm';
+import UncontrolledForm from './components/UncontrolledForm/UncontrolledForm';
+import ControlledForm from './components/ControlledForm/ControlledForm';
 import Home from './pages/Home/Home';
 
 const router = createBrowserRouter([

@@ -4,16 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { submitControlledForm } from '../../app/rootSlice';
 import { schema } from '../../utils/validation';
-import styles from './controlled.module.scss';
+import styles from './ControlledForm.module.scss';
 import { IFormInput } from '../../utils/types';
 import { DevTool } from '@hookform/devtools';
 import { convertFileToBase64 } from '../../utils/convertFileToBase64';
+import CountrySelect from '../CountrySelect/CountrySelect';
 
 const ControlledForm: React.FC = () => {
   const form = useForm<IFormInput>({
     mode: 'onChange',
     resolver: yupResolver(schema),
   });
+
   const {
     register,
     handleSubmit,
@@ -26,7 +28,6 @@ const ControlledForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
-    // console.log('submitted', data);
     if (data.picture !== undefined) {
       const image = data.picture as FileList;
       const imagebase64 = await convertFileToBase64(image[0]);
@@ -176,6 +177,14 @@ const ControlledForm: React.FC = () => {
           {errors.picture && (
             <span className={styles.error_message}>
               {errors.picture.message}
+            </span>
+          )}
+        </div>
+        <div className={styles.input_wrapper}>
+          <CountrySelect {...register('country')} />
+          {errors.country && (
+            <span className={styles.error_message}>
+              {errors.country.message}
             </span>
           )}
         </div>

@@ -61,4 +61,5 @@ export const schema = yup.object().shape({
         return allowedExtensions.includes(fileType);
       },
     }),
+  country: yup.string().required('Country is a required field'),
 });
