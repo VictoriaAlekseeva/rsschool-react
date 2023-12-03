@@ -11,6 +11,6 @@ const rootSlice = createSlice({
   },
 });
 
-export const reducer = rootSlice.reducer;
+export const rootReducer = rootSlice.reducer;
 export const { submitControlledForm } = rootSlice.actions;
 export default rootSlice.reducer;

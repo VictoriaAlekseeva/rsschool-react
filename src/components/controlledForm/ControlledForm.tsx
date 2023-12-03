@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { submitControlledForm } from '../../app/rootSlice';
 import { schema } from '../../utils/validation';
-import styles from './controller.module.scss';
+import styles from './controlled.module.scss';
 import { IFormInput } from '../../utils/types';
 import { DevTool } from '@hookform/devtools';
 

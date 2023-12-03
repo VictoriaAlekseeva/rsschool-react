@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 
 const Home: React.FC = () => {
-  const state = useSelector((store: RootState) => store);
+  const state = useSelector((store: RootState) => store.root);
   return (
     <>
     <div className={styles.wrapper}>
