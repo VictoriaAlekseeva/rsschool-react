@@ -1,0 +1,39 @@
+.form_wrapper {
+  width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input_wrapper {
+  width: inherit;
+  height: 70px;
+}
+
+.input_wrapper > * {
+  display: block;
+}
+
+.error_message {
+  font-size: 14px;
+  color: red;
+}
+
+.label {
+  font-weight: 800;
+}
+
+.input {
+  width: 100%;
+}
+
+.submit_disabled {
+  background-color: lightgray;
+  color: grey;
+}
+
+.submit_enabled {
+  color: black;
+  font-weight: 800;
+}

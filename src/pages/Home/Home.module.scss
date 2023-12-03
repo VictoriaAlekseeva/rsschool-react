@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+}
+
+.form_info {
+  width: 250px;
+  list-style: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.form_info:last-child {
+  animation: flashBackground 2s;
+}
+
+@keyframes flashBackground {
+  0% {
+    background-color: lightblue;
+  }
+  50% {
+    background-color: white;
+  }
+  100% {
+    background-color: lightblue;
+  }
+}
+
+.form_info__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
