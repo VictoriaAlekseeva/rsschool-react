@@ -38,27 +38,6 @@ export const schema = yup.object().shape({
     .oneOf([true], 'You must accept the Terms & Conditions')
     .required(),
   gender: yup.string().oneOf(['male', 'female', 'other']).default(null),
-  // picture: yup
-  //   .mixed()
-  //   .test({
-  //     name: 'fileSize',
-  //     message: 'File size is too large',
-  //     test: (value) => {
-  //       if (!value || !(value instanceof FileList)) return true;
-  //       const kb = 1024;
-  //       const maxSizeMb = 2 * kb * kb;
-  //       return (value as FileList)[0].size <= maxSizeMb;
-  //     },
-  //   })
-  //   .test({
-  //     name: 'fileType',
-  //     message: 'Invalid file format. Only png and jpeg are allowed',
-  //     test: (value) => {
-  //       if (!value || !(value instanceof FileList)) return true; // Допускается отсутствие файла
-  //       const allowedExtensions = ['image/png', 'image/jpeg'];
-  //       return allowedExtensions.includes((value as FileList)[0].type);
-  //     },
-  //   }),
   picture: yup
     .mixed()
     .test({

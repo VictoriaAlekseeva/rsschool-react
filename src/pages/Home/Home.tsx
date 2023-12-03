@@ -18,7 +18,11 @@ const Home: React.FC = () => {
               {Object.keys(item).map((key) => (
                 <li key={key}>
                   <span>{key}:</span>
-                  {`${item[key as keyof typeof item]}`}
+                  {key === 'picture' ? (
+                    <img src={item[key] as string} alt="" width={200} />
+                  ) : (
+                    `${item[key as keyof typeof item]}`
+                  )}
                 </li>
               ))}
             </ul>

@@ -7,6 +7,7 @@ import { schema } from '../../utils/validation';
 import styles from './controlled.module.scss';
 import { IFormInput } from '../../utils/types';
 import { DevTool } from '@hookform/devtools';
+import { convertFileToBase64 } from '../../utils/convertFileToBase64';
 
 const ControlledForm: React.FC = () => {
   const form = useForm<IFormInput>({
@@ -25,10 +26,16 @@ const ControlledForm: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data: IFormInput) => {
-    console.log('submitted', data);
-    dispatch(submitControlledForm(data));
-    reset();
-    navigate('/');
+    // console.log('submitted', data);
+    if (data.picture !== undefined) {
+      const image = data.picture as FileList;
+      const imagebase64 = await convertFileToBase64(image[0]);
+      const result = { ...data, picture: imagebase64 };
+
+      dispatch(submitControlledForm(result));
+      reset();
+      navigate('/');
+    }
   };
 
   return (
