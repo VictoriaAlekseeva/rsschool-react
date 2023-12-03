@@ -3,7 +3,7 @@ import { rootReducer } from './rootSlice';
 
 export const store = configureStore({
   reducer: {
-    root: rootReducer
+    root: rootReducer,
   },
 });
 

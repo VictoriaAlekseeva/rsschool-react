@@ -7,9 +7,9 @@ const Home: React.FC = () => {
   const state = useSelector((store: RootState) => store.root);
   return (
     <>
-    <div className={styles.wrapper}>
-      <Link to={'/controlled'}>controlled</Link>
-      <Link to={'/uncontrolled'}>uncontrolled</Link>
+      <div className={styles.wrapper}>
+        <Link to={'/controlled'}>controlled</Link>
+        <Link to={'/uncontrolled'}>uncontrolled</Link>
       </div>
       <div className={styles.form_info__wrapper}>
         {state.length > 0 &&
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
             </ul>
           ))}
       </div>
-      </>
+    </>
   );
 };
 

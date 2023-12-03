@@ -59,7 +59,7 @@ export const schema = yup.object().shape({
   //       return allowedExtensions.includes((value as FileList)[0].type);
   //     },
   //   }),
-    picture: yup
+  picture: yup
     .mixed()
     .test({
       name: 'fileSize',

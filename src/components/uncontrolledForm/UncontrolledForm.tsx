@@ -1,7 +1,6 @@
 import styles from './uncontrolled.module.scss';
 import { useRef } from 'react';
 
-
 const UncontrolledForm: React.FC = () => {
   const formRef = useRef(null);
 
@@ -18,25 +17,22 @@ const UncontrolledForm: React.FC = () => {
 
     const formData = new FormData(form);
 
-      const imageFile = formData.get('picture') as File | null;
+    const imageFile = formData.get('picture') as File | null;
 
+    console.log(imageFile);
 
-      console.log(imageFile);
+    const data = {
+      name: formData.get('name') || '',
+      country: formData.get('country') || '',
+      age: Number(formData.get('age')) || 0,
+      email: formData.get('email') || '',
+      password: formData.get('password') || '',
+      confirmPassword: formData.get('confirmPassword') || '',
+      gender: formData.get('gender') || '',
+      acceptTerms: Boolean(formData.get('acceptTerms')),
+    };
 
-
-      const data = {
-        name: formData.get('name') || '',
-        country: formData.get('country') || '',
-        age: Number(formData.get('age')) || 0,
-        email: formData.get('email') || '',
-        password: formData.get('password') || '',
-        confirmPassword: formData.get('confirmPassword') || '',
-        gender: formData.get('gender') || '',
-        acceptTerms: Boolean(formData.get('acceptTerms')),
-      };
-
-      console.log('submitted', data);
-
+    console.log('submitted', data);
   };
 
   return (

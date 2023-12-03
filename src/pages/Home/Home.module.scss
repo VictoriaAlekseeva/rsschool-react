@@ -18,9 +18,15 @@
 }
 
 @keyframes flashBackground {
-  0% { background-color: lightblue; }
-  50% { background-color: white; }
-  100% { background-color: lightblue; }
+  0% {
+    background-color: lightblue;
+  }
+  50% {
+    background-color: white;
+  }
+  100% {
+    background-color: lightblue;
+  }
 }
 
 .form_info__wrapper {

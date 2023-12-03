@@ -160,7 +160,12 @@ const ControlledForm: React.FC = () => {
           <label className={styles.label} htmlFor="picture">
             Upload picture (allowed .png .jpeg and less 3mb)
           </label>
-          <input type="file" id="picture" accept="image/*" {...register('picture')} />
+          <input
+            type="file"
+            id="picture"
+            accept="image/*"
+            {...register('picture')}
+          />
           {errors.picture && (
             <span className={styles.error_message}>
               {errors.picture.message}
