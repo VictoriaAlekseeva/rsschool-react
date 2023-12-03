@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { submitControlledForm } from '../../app/rootSlice';
 import { schema } from '../../utils/validation';
@@ -41,6 +41,7 @@ const ControlledForm: React.FC = () => {
 
   return (
     <div className="wrapper">
+      <Link to={'/'}>Home</Link>
       <h2>Controlled Form</h2>
       <form className={styles.form_wrapper} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.input_wrapper}>
